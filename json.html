@@ -5,50 +5,39 @@
 		<title>JSON Parse, Stringify</title>
 		<script type="text/javascript">
 			
-			function stringifyNames(){
-				var fullName = {'firstName': document.getElementById('firstName').value, 'lastName':document.getElementById('lastName').value};
-				var resultNames = JSON.stringify(fullName);
-				return resultNames;
-			}
-			
 			function parseNames(){
-				var myObj = JSON.parse(stringifyNames());
-				document.getElementById('output1').innerHTML = myObj.firstName + " " + myObj.lastName;
+				var myJSON = '{ "persons" : [' + '{ "firstName":"Adam" , "lastName":"First" },' +
+								'{ "firstName":"Eve" , "lastName":"Second" },' + 
+								'{ "firstName":"Cain" , "lastName":"Third" } ]}';
+				var myObj = JSON.parse(myJSON);
+				document.getElementById('output1').innerHTML = myObj.persons[0].firstName + " " + 
+				myObj.persons[0].lastName + ", " + myObj.persons[1].firstName + " " + myObj.persons[1].lastName + 
+				", " + myObj.persons[2].firstName + " " + myObj.persons[2].lastName;
 			}
 			
-			function stringifyPersons(){
-			<!-- array persons -->
-				var persons = [
+			function stringifyNames(){
+				var myObj = [
 					{'firstName': 'Adam', 'lastName': 'First'},
 					{'firstName': 'Eve', 'lastName': 'Second'},
 					{'firstName': 'Cain', 'lastName':'Third'}
 					];
-					var resultPersons = JSON.stringify(persons);
-				return resultPersons;
-			}
-			
-			function parsePersons(){
-				var myObj = JSON.parse(stringifyPersons());
-				var num = document.getElementById('number').value;
-				document.getElementById('output2').innerHTML = myObj[num].firstName + " " + myObj[num].lastName;
+				var myJSON = JSON.stringify(myObj);
+				document.getElementById('output2').innerHTML = myObj[0].firstName + " " + myObj[0].lastName + 
+				", " + myObj[1].firstName + " " + myObj[1].lastName + ", " + myObj[2].firstName + " " + 
+				myObj[2].lastName;
 			}
 			
 		</script>
 	</head>
 	<body>
-		<p>
-			Please enter your first name: <input type="text" size="17" id="firstName" value="Ex.: Joseph"> <br>
-			Please enter your last name: <input type="text" size="18" id="lastName" value="Ex.: Smith"><br>
-			
-		</p>
+		<p>Here is simple demonstration of JSON.parse()</p>
 		<div>
-			<button type="button" onclick="parseNames()">See Full Name</button>
+			<button type="button" onclick="parseNames()">See All Parse Names</button>
 		</div>
 		<div id="output1"></div><br><br>
-		
+		<p>Here is simple demonstration of JSON.stringify()</p>
 		<div>
-			<input type="number" id='number' min='0' max='2' size='1' value='0'>
-			<button type="button" onclick="parsePersons()">See Persons List</button>
+			<button type="button" onclick="stringifyNames()">See All Stringify Names</button>
 			
 		</div>
 		<div id="output2"></div>
