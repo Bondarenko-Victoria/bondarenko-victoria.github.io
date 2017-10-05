@@ -6,25 +6,23 @@
 		<script type="text/javascript">
 			
 			function parseNames(){
-				var myJSON = '{ "persons" : [' + '{ "firstName":"Adam" , "lastName":"First" },' +
+				var myJSON1 = '{ "persons" : [' + '{ "firstName":"Adam" , "lastName":"First" },' +
 								'{ "firstName":"Eve" , "lastName":"Second" },' + 
 								'{ "firstName":"Cain" , "lastName":"Third" } ]}';
-				var myObj = JSON.parse(myJSON);
-				document.getElementById('output1').innerHTML = myObj.persons[0].firstName + " " + 
-				myObj.persons[0].lastName + ", " + myObj.persons[1].firstName + " " + myObj.persons[1].lastName + 
-				", " + myObj.persons[2].firstName + " " + myObj.persons[2].lastName;
+				var myObj1 = JSON.parse(myJSON1);
+				document.getElementById('output1').innerHTML = myObj1.persons[0].firstName + " " + 
+				myObj1.persons[0].lastName + ", " + myObj1.persons[1].firstName + " " + myObj1.persons[1].lastName + 
+				", " + myObj1.persons[2].firstName + " " + myObj1.persons[2].lastName;
 			}
 			
 			function stringifyNames(){
-				var myObj = [
-					{'firstName': 'Adam', 'lastName': 'First'},
-					{'firstName': 'Eve', 'lastName': 'Second'},
-					{'firstName': 'Cain', 'lastName':'Third'}
+				var myObj2 = [
+					{"firstName": "Adam", "lastName": "First"},
+					{"firstName": "Eve", "lastName": "Second"},
+					{"firstName": "Cain", "lastName": "Third"}
 					];
-				var myJSON = JSON.stringify(myObj);
-				document.getElementById('output2').innerHTML = myObj[0].firstName + " " + myObj[0].lastName + 
-				", " + myObj[1].firstName + " " + myObj[1].lastName + ", " + myObj[2].firstName + " " + 
-				myObj[2].lastName;
+				var myJSON = JSON.stringify(myObj2);
+				document.getElementById('output2').innerHTML = myJSON;
 			}
 			
 		</script>
