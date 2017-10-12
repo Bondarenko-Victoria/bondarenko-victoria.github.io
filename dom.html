@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>DOM Manipulation Using createElement, appendChild, insertBefore, removeChild</title>
+	</head>
+		
+	<body>
+		<!-- 1. createElement() and appendChild() -->
+		<h2>1. createElement() and appendChild()</h2>
+		<p><strong>We have 2 lines:</strong></p>
+		<pre>
+		Here is a first  line from example1.
+		Here is another line from example1.
+		</pre>
+		<p><strong>And we want to add a third line. This line will be added after a second line:</strong></p>
+		<pre>
+		It will be a third line from example1.
+		</pre>
+		<p><strong>Here is our result:</strong></p>
+		<div id="line1">
+			<p id="line11">Here is a first line from example1.</p>
+			<p id="line12">Here is another line from example1.</p>
+		</div >
+		
+		<script>
+			var myLine = document.createElement("l");
+			var textNode = document.createTextNode("It will be a third line from example1.");
+			myLine.appendChild(textNode);
+			
+			var elementId = document.getElementById("line1");
+			elementId.appendChild(myLine);
+		</script >
+		</br>
+		</br>
+		
+		
+		<!-- 2. insertBefore() -->
+		<h2>2. insertBefore()</h2>
+		<p><strong>We have 2 lines:</strong></p>
+		<pre>
+		Here is a first  line from example2.
+		Here is another line from example2.
+		</pre>
+		<p><strong>And we want to add a third line, but in second example this line we want to insert before first line:</strong></p>
+		<pre>
+		Now it will be a first line from example2.
+		</pre>
+		<p><strong>Here is our result:</strong></p>
+		<div id="line2">
+			<p id="line21">Here is a first  line from example2.</p>
+			<p id="line22">Here is another line from example2.</p>
+		</div >
+		<script>
+			var myLine = document.createElement("l");
+			var textNode = document.createTextNode("Now it will be a first line from example2.");
+			myLine.appendChild(textNode);
+		
+			var elementId = document.getElementById("line2");
+			var childElement = document.getElementById("line21");
+			elementId.insertBefore(myLine, childElement);
+		</script >
+		</br>
+		</br>
+		
+		
+		<!-- 3. removeChild() -->
+		<h2>3. removeChild()</h2>
+		<p><strong>We have 2 lines:</strong></p>
+		<pre>
+		Here is a first  line from example3.
+		Here is another line from example3.
+		</pre>
+		<p><strong>And we want to delete a first line:</strong></p>
+		<pre>
+		Here is a first  line from example3.
+		</pre>
+		<p><strong>Here is our result:</strong></p>
+		<div id="line3">
+			<p id="line31">Here is a first line from example3.</p>
+			<p id="line32">Here is another line from example3.</p>
+		</div >
+		<script>
+			var parentElement = document.getElementById("line3");
+			var childElement = document.getElementById("line31");
+			parentElement.removeChild(childElement);
+		</script >
+
+	</body>
+</html>
