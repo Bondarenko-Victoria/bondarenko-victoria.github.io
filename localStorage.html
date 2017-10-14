@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Local Storage API, Storing and Retrieving Simple Data, Arrays, Associative Arrays, and Objects</title>
+	</head>
+		
+	<body>
+		<h2>Local Storage Storing Data</h2>
+
+		<p>Please enter your information below:</p>
+		<p>First Name: <input type="text" size="12" id="firstName" value="Joseph"></p>
+		<p>Last Name: <input type="text" size="12" id="lastName" value="Smith"></p> 
+		<p>Age: <input type="text" size="18" id="age" value="33"></p>
+		<input type="button" value="Store" onclick="storeData()">
+		</br>
+		</br>
+		<div id="store"></div>
+		
+		<script>			
+			// Store
+			var person = [];
+			function storeData(){
+			localStorage.firstCode = document.getElementById("firstName").value;
+			localStorage.lastCode = document.getElementById("lastName").value;
+			localStorage.ageCode = document.getElementById("age").value;
+			person.push(localStorage.ageCode);
+			document.getElementById("store").innerHTML = "Your name is " + localStorage.firstCode + 
+			", your last name is  " + localStorage.lastCode + ", your age is " + localStorage.ageCode + 
+			". Your request has been stored!";
+			}
+		</script>
+
+		</br>
+		<h2>Local Storage Retrieving Data</h2>
+		<p>Push the button to retrieve your information:</p>
+		<input type="button" value="Retrieve" onclick="retrieveData()">
+		</br>
+		</br>
+		<div id="retrieve"></div>
+		
+		<script>			
+			// Retrieve
+			function retrieveData() {
+			var personCode = {last:localStorage.lastCode, first:localStorage.firstCode};
+			localStorage.personInfo = JSON.stringify(personCode);
+			localStorage.info = JSON.stringify(person);
+			document.getElementById("retrieve").innerHTML =  JSON.parse(localStorage.personInfo).first + " "  
+			+ JSON.parse(localStorage.personInfo).last + " with age of " + JSON.parse(localStorage.info) + 
+			", your information successfully retrieved!";
+			}
+		</script>
+	</body>
+</html>
