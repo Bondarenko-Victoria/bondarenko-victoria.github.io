@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>AJAX</title>
+	</head>
+	
+	<body>
+		<script type="text/javascript">
+			function showingName() {
+				xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if (xhttp.readyState == 4 && xhttp.status == 200) {
+						var value = JSON.parse(xhttp.responseText);
+						console.log(value)
+					document.getElementById("respText").innerHTML = "My name is " + value[0].firstName + 
+					", my last name is " + value[0].lastName + ".";
+					}
+				}
+				xhttp.open('GET', 'https://bondarenko-victoria.github.io/ajaxJSON.json', true);
+				 
+				xhttp.send();
+			}
+		</script>
+		<h2>AJAX requesting a JSON file</h2>
+		<p id="respText"></p>
+		<button type="button" onclick="showingName()">Press</button>
+	</body>
+</html>
