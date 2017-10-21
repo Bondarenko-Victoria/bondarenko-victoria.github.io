@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<meta charset="UTF-8"/>
+        <title>Manipulating CSS Class Properties Using JavaScript</title>
+    </head>
+    <body id="body">        
+        <div>
+            <h2>Manipulating CSS Class Properties Using JavaScript</h2>
+            <h3 id="title">My favorite quote :)</h3>
+            <p id="quote"><em>Albert Einstein:</em></p>
+            <p id="quote1">"Insanity is doing the same thing over and over again and expecting different results.
+			<br> <br> Insanity is repeating the same mistakes and expecting different results."</p>
+            <button type="button" onclick="changeColor()">Change Colour of Quote</button>
+			</br></br>
+            <button type="button" id="button1" onclick="changeBackground()">Change Colour of Background</button>
+			</br></br>
+            <button type="button" onclick="changeQuote()">Change Quote</button>
+        </div>
+        <script>
+            var q = 1;
+			var b = 0;
+			
+            function changeColor(){
+                if (document.getElementById("title").style.color == "green")
+                    document.getElementById("title").style.color = "red";
+                else
+                    document.getElementById("title").style.color = "green";
+            }
+
+            function changeQuote(){
+                if (q == 1){
+                    document.getElementById("quote").innerHTML = "<em>Pythagoras:</em>";
+                    document.getElementById("quote1").innerHTML = "Do not let sleep close your tired eyes until " +
+					"you have three times gone over the events of the day. 'What did I do wrong? What did I " +
+					"accomplish? What did I fail to do that I should have done?' Starting from the beginning, go " +
+					"through to the end. Then, reproach yourself for the things you did wrong, and take pleasure " +
+					"in the good things you did.";
+                    q = 0;
+                } 
+				else {
+                    document.getElementById("quote").innerHTML = "<em>Albert Einstein:</em>";
+                    document.getElementById("quote1").innerHTML = "Insanity: doing the same thing over and over " +
+					"again and expecting different results. <br> <br> Insanity is repeating the same mistakes and " +
+					"expecting different results.";
+					q = 1;
+                } 
+            }
+			
+            function changeBackground(){
+                if (b == 0){
+                    document.getElementById("body").style.backgroundColor = "lightblue";
+                    document.getElementById("body").style.color = "black";
+                    b = 1;
+                }
+                else {
+                    document.getElementById("body").style.backgroundColor = "lightyellow";
+                    document.getElementById("body").style.color = "black";
+                    b = 0;
+                }
+            }
+        </script>
+    </body>
+</html>
