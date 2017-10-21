@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>CSS3 Animation</title>
+		
+		<style>
+			body {
+				padding: 0.5em;
+			}
+			
+			div {
+				position: relative;
+				height: 80px;
+				width: 80px;
+			}
+			
+			
+			@keyframes example11{
+				from {background-color: green;}
+				to {background-color: red;}
+			}
+			
+			#example11 {
+				animation-name: example11;
+				animation-duration: 4s;
+				animation-timing-function: ease;
+				animation-delay: 4s;
+				animation-iteration-count: infinite;
+				animation-direction: alternate;
+			}
+			
+			
+			@keyframes example12{
+				0%  {
+					background-color: lightgreen; 
+					left:0px; 
+					top:0px;
+				}
+				25% {
+					transform: rotate(90deg);
+					left: 50px;
+				}
+				50% {
+					transform: rotate(180deg);
+					left: 100px;
+				}
+				75% {
+					transform: rotate(270deg);
+					left: 150px;
+				}
+				100% {
+					transform: rotate(360deg);
+					left: 200px;
+				}
+			}
+			
+			#example12 {
+				position: absolute;
+				animation: example12 7s ease-in-out 2s infinite alternate;
+			}
+			
+			
+			@keyframes example13{
+				0%  {background-color: red; left:0px; top:0px;}
+				25% {background-color: orange; left:50px; top:50px;}
+				50% {background-color: yellow; left:0px; top:50px;}
+				75% {background-color: green; left:50px; top:0px;}
+				100%{background-color: blue; left:0px; top:0px;}
+			}
+			
+			#example13 {
+				position: absolute;
+				animation: example13 4s linear 4s infinite alternate;
+			}
+			
+			
+			@keyframes example14{
+				from{
+					transform: scale(.1,.1);
+					left:0px;
+				}   
+				to  {
+					transform: scale(1,1);
+					left: 425px;
+				}   
+			}
+			
+			#example14 {
+				width: 100px;
+				height: 100px;
+				background: lightblue;
+				-moz-border-radius: 0px;
+				-webkit-border-radius: 0px;
+				border-radius: 0px;
+				animation-name: example14;
+				animation-duration: 4s;
+				animation-timing-function: cubic-bezier(1,4,1,-0.5);
+				animation-delay: 4s;
+				animation-iteration-count: infinite;
+				animation-direction: alternate;
+			}
+			
+			
+			
+			#example21 {
+				width: 250px;
+				height: 100px;
+				background-color: lightblue;
+				border: 1.25px solid black;
+			}
+			
+			#example22 {
+				width: 250px;
+				height: 100px;
+				background-color: lightblue;
+				border: 1.25px solid black;
+			}
+			
+			#example22:hover {
+				background-color: blue;
+				transform: rotate(45deg);
+			}
+			
+			
+			#example23 {
+				width: 250px;
+				height: 100px;
+				background-color: lightblue;
+				border: 1.25px solid black;
+			}
+			
+			#example23:hover {
+				background-color: purple;
+				transform: scale(.75,.75);
+			}
+			
+			
+			#example24 {
+				width: 250px;
+				height: 100px;
+				background-color: lightblue;
+				border: 1.25px solid black;
+			}
+			
+			#example24:hover {
+				background-color: lightgreen;
+				transform: translate(300px,-120px);
+			}
+		</style>
+	</head>
+	<body>
+		<h2>CSS3 Animation</h2>
+		</br>
+		</br>
+		<div id='example11'>Example1.1</div>
+		</br>
+		</br>
+		<div><div id='example12'>Example1.2</div></div>
+		</br>
+		</br>
+		<div><div id='example13'>Example1.3</div></div>
+		</br>
+		</br>
+		<div id='example14'>Example1.4</div>
+		</br>
+		</br>
+		</br>
+		<h2>CSS3 Transformations</h2>
+		</br>
+		<h3>Hover over the rectangles and watch them change!</h3>
+		<section id="main">
+			<div id='example21'>Example 2.1 (standard)</div>
+			</br>
+			<div id='example22'>Example 2.2 (rotate)</div>
+			</br>
+			<div id="example23">Example 2.3 (scale)</div>
+			</br>
+			<div id="example24">Example 2.4 (translate 2D)</div>
+		</section>
+	</body>
+</html>
