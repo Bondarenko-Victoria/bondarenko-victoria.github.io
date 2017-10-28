@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>HTML5 Tags</title>
+	</head>
+	
+	<body>
+		<h2>HTML5 Tags</h2>
+		<h3>Audio</h3>
+		<p>Enjoy music that I am singing!</p>
+		<p>P.S. Be careful with the sound. Better if you will do it much quieter, even more than half quieter!!!</p>
+		<audio controls>
+			<source src="https://bondarenko-victoria.github.io/Victoria_Bondarenko_-_Kanzas_City.mp3" type="audio/mp3">
+			Currently, we do not have the audio format supported by your browser.
+		</audio>
+		</br>
+		<h3>Video</h3>
+		<p>Enjoy video from my concert!</p>
+		<p>P.S. Be careful with the sound. Better if you will do it much quieter, even more than half quieter!!!</p>
+		<video width="480" height="360" controls>
+			<source src="https://bondarenko-victoria.github.io/Rock&Roll.mp4" type="video/mp4">
+			Currently, we do not have the video format supported by your browser.
+		</video>
+		<h3>Canvas</h3>
+		<canvas id="canvasExample"></canvas>
+		<div>
+			<button type="button" onclick="changeShape()">Change Shape of Rectangle</button>
+			<button type="button" onclick="changeColor()">Change Color of Rectangle</button>
+		</div>
+		<script>
+			var s = 1;
+			var c = 0;
+			var canv = document.getElementById("canvasExample");
+			var cont = canv.getContext("2d");
+			cont.fillStyle = "blue";
+			cont.fillRect(0,0,100,120);
+			cont.save();
+			
+			function changeShape() {
+				if (s == 1){
+					cont.clearRect(0,0,100,120);
+					if(c == 0){
+						cont.fillStyle = "blue";
+						cont.fillRect(0,0,120,100);
+					}
+					if(c == 1){
+						cont.fillStyle = "yellow";
+						cont.fillRect(0,0,120,100);
+					}
+					s = 0;
+				}
+				else if (s == 0){
+					cont.clearRect(0,0,120,100);
+					if(c == 0){
+						cont.fillStyle = "blue";
+						cont.fillRect(0,0,100,120);
+					}
+					if(c == 1){
+						cont.fillStyle = "yellow";
+						cont.fillRect(0,0,100,120);
+					}
+					s = 1;	
+				}
+			}
+			
+			function changeColor() {
+				if (c == 1){
+					cont.fillStyle = "blue";
+					if(s == 1){
+						cont.clearRect(0,0,100,120);
+						cont.fillRect(0,0,100,120);
+					}
+					if(s == 0){
+						cont.clearRect(0,0,120,100);
+						cont.fillRect(0,0,120,100);
+					}
+					c = 0;
+				}
+				else if (c == 0){
+					cont.fillStyle = "yellow";
+					if(s == 1){
+						cont.clearRect(0,0,100,120);
+						cont.fillRect(0,0,100,120);
+					}
+					if(s == 0){
+						cont.clearRect(0,0,120,100);
+						cont.fillRect(0,0,120,100);
+					}
+					c = 1;	
+				}
+			}
+		</script>
+	</body>
+</html>
