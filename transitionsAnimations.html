@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<title>Creating CSS3 Transitions and Animations in CSS and triggering them with JavaScript</title>
+        <meta charset="UTF-8">
+        <style type="text/css">
+            .square1 {
+                width: 70px;
+                height: 70px;
+                background: blue;
+                transition: width 2s, height 2s, transform 3s;
+            }
+			
+            .square1:hover {
+                width: 140px;
+                height: 140px;
+                background: yellow;
+                transform: rotate(270deg);
+            }
+			
+			
+            .square2{
+                width: 70px;
+                height: 70px;
+                background: yellow;
+                transition: width 2s, height 4s;
+            }
+			
+            .square2:hover{
+                width: 140px;
+                height: 140px;
+				background: yellowgreen;
+            }
+			
+			
+            .square3{
+                width: 70px;
+                height: 70px;
+                background-color: blue;
+                position: relative;
+				animation-name: move;
+				animation-duration: 4s;
+				animation-timing-function: linear;
+				animation-iteration-count: infinite;
+				animation-direction: alternate;
+            }
+			
+            @keyframes move {
+                0%   {background-color:red; left:0px; top:0px;}
+                25%  {background-color:orange; left:30px; top:0px;}
+                50%  {background-color:yellow; left:30px; top:30px;}
+                75%  {background-color:yellowgreen; left:0px; top:30px;}
+                100% {background-color:blue; left:0px; top:0px;}
+            }
+			
+            @keyframes move {
+                0%   {background-color:blue; left:0px; top:0px;}
+                25%  {background-color:yellowgreen; left:30px; top:0px;}
+                50%  {background-color:yellow; left:30px; top:30px;}
+                75%  {background-color:orange; left:0px; top:30px;}
+                100% {background-color:red; left:0px; top:0px;}
+            }
+            
+			
+            .flower {
+                position: relative;
+                width: 100px;
+                height: 100px;
+                margin: 10px;
+                transform: scale(1);
+                transition: all 2s; 
+            }
+			
+            .flower.css {  
+                animation-dely: 2s;
+            }
+			
+            .flower.animated {
+                animation: 2500ms pulsate infinite alternate ease-in-out;
+            }
+			
+            .flower:before,
+			.flower:after {
+                position: absolute; 
+                content: "";
+                left: 50px;
+                top: 50px;
+                width: 50px;
+                height: 50px;
+                background: purple;
+                border-radius: 50px 10px 50px 10px;
+            }
+			
+			.flower:before {
+				transform: rotate(-45deg);
+				transform-origin: 0 100%;
+            }
+			
+            .flower:after {
+                left: 0;
+				transform: rotate(45deg);
+				transform-origin :100% 100%;
+            }
+			
+            .flower.css:hover {
+				-webkit-transform: scale(1.5);
+                transform: scale(1.5);
+                -webkit-animation:'';
+                animation:'';
+            }
+			
+			
+            @keyframes pulsate {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.2); }
+                100% { transform: scale(1); }
+            }
+        </style>
+    </head>
+    <body>        
+        <h2>Creating CSS3 Transitions and Animations in CSS and triggering them with JavaScript</h2>
+		<h3>CSS3 Transitions</h3>
+		<p>Hover examples to see a change!</p>
+        <div class='square1'>Example 1</div> 
+		</br>
+		<div class='square2'>Example 2</div>
+		</br>
+		</br>
+		<h3>CSS3 Animations</h3>
+        <div class='square3'>Example 3</div> 
+		</br>
+		</br>
+        <h3>Animations and Transitions with JavaScript</h3>
+		<div class='flower animated css'>Example 4</div>
+		</br>
+		</br>
+        <script>
+            var flower = document.getElementsByClassName('flower')[1];
+            var vmo = ["webkit", ""];
+            var hovered = false;
+			
+            function AnimatListener() {
+                if(hovered) { 
+                  flower.classList.remove('animated'); 
+                  flower.style.webkitTransform = 'scale(1.5)';
+                  flower.style.transform = 'scale(1.5)';
+                }
+            }
+			
+            function TransitListener() {
+              if(!hovered) {
+                flower.classList.add('animated');
+              }
+            }
+			
+            function event(element, type, callback) {
+                for (var i = 0; i < vmo.length; i++) {
+                    if (!vmo[i]) type = type.toLowerCase();
+                    element.addEventListener(vmo[i]+type, callback, false);
+                }
+            }
+			
+            event(flower, "AnimatIteration", AnimatListener);
+				flower.onmouseover = function() {
+				  hovered = true;
+            }
+			
+            flower.onmouseout = function() {
+              setTimeout(function() { 
+				hovered = false; 
+				}, 500);
+              event(flower, "TransitEnd", TransitListener);
+              flower.style.webkitTransform = 'scale(1)';
+              flower.style.transform = 'scale(1)';  
+            }
+        </script>
+    </body>
+</html>
