@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<meta charset="UTF-8"/>
+        <title>Standard JavaScript Events Including those for Mobile Devices ( Ex. onTouchBegin, onLoad, etc.) 
+		and Animation and Transition Events</title>
+    </head>
+	
+    <body onload="onloadExample()">        
+        <div>
+            <h2>Standard JavaScript Events Including those for Mobile Devices</h2>
+            <h3>Onclick Event</h3>
+            <p>If you want to know the date and time click the button.</p>
+            <button onclick="onclickExample()">Date and Time</button>
+            <p id="resultOnclick"></p>
+			</br>
+            <h3>Oncopy Event</h3>
+            <input type="text" oncopy="oncopyExample()" value="Please, COPY this text!">
+            <p id="resultOncopy"></p>
+            </br>
+            <h3>Onchange Event</h3>
+            <p>Select a person from a list.</p>
+            <select id="selectPerson" onchange="onchangeExample()">
+                <option value="Ian">Ian
+                <option value="Jonathan">Jonathan
+                <option value="Victoria">Victoria
+            </select>            
+            <p id="resultOnchange"></p>
+            </br>
+            <h4>Onsubmit Event</h4>
+            <form action="#" onsubmit="onsubmitExample()">
+                <p>Enter Your First Name: <input type="text" name="firstName" value="Joseph"></p>
+                <p>Enter Your Last Name: <input type="text" name="lastName" value="Smith"></p>
+                <input type="submit" value="Submit">
+            </form> 
+        </div>
+        
+        <script>
+			function onloadExample() {
+                alert("Here is an example of onload");
+            }
+			
+            function onclickExample() {
+				var d = new Date();
+                document.getElementById("resultOnclick").innerHTML = d.toLocaleString();
+            }
+            
+            function oncopyExample() {
+                document.getElementById("resultOncopy").innerHTML = "You have copied this text!"
+            }
+			
+            function onchangeExample() {
+                var per = document.getElementById("selectPerson").value;
+                document.getElementById("resultOnchange").innerHTML = "You have selected: " + per;
+            }
+            function onsubmitExample() {
+				alert("Your form has submitted!");
+            }
+        </script>
+    </body>
+</html>
