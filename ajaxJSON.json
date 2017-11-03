@@ -1,4 +1,8 @@
-[{
-	"firstName": "Victoria",
-	"lastName": "Bondarenko"
-}]
+{"names":[
+    {"firstName":"Victoria", "lastName":"Bondarenko", "favoriteColor":"red"},
+    {"firstName":"Sasha", "lastName":"Ivanov", "favoriteColor":"green"},
+    {"firstName":"Julia", "lastName":"Petrova", "favoriteColor":"blue"},
+    {"firstName":"Alex", "lastName":"Sidarov", "favoriteColor":"yellow"},
+    {"firstName":"Dasha", "lastName":"Schevchenko", "favoriteColor":"orange"},
+    {"firstName":"Andrey", "lastName":"Kokhava", "favoriteColor":"purple"}
+]}
