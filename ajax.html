@@ -13,12 +13,15 @@
 					if (xhttp.readyState == 4 && xhttp.status == 200) {
 						var value = JSON.parse(xhttp.responseText);
 						console.log(value)
-					document.getElementById("respText").innerHTML = "My name is " + value[0].firstName + 
-					", my last name is " + value[0].lastName + ".";
+						var table = "<table><tr><th>First Name</th><th>Last Name</th><th>Favorite Color</th></tr>\n";
+						for (var i = 0; i < value.names.length; i++) {
+							table += "<tr><td>" + value.names[i].firstName + "</td><td>" + value.names[i].lastName + 
+							"</td><td>" + value.names[i].favoriteColor + "</td></tr>\n";
+						}
+						document.getElementById("respText").innerHTML = table;
 					}
 				}
 				xhttp.open('GET', 'https://bondarenko-victoria.github.io/ajaxJSON.json', true);
-				 
 				xhttp.send();
 			}
 		</script>
