@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Designing, Defining, and Triggering CSS3 Transforms without Custom Libraries</title>
+		
+		<style>
+			body {
+				padding: 0.5em;
+			}
+			
+			div {
+				position: relative;
+				width: 250px;
+				height: 100px;
+				background-color: lightblue;
+				border: 1.25px solid black;
+			}	
+			
+			
+			#example1:hover {
+				background-color: lightgreen;
+				transform: translate(410px,-165px);
+			}
+						
+			
+			#example2:hover {
+				background-color: blue;
+				transform: rotate(45deg);
+			}
+						
+			
+			#example3:hover {
+				background-color: purple;
+				transform: scale(.75,.75);
+			}
+						
+			
+			#example4:hover {
+				background-color: yellowgreen;
+				transform: skew(-10deg, 20deg);
+			}
+			
+			
+			#example5:hover {
+				background-color: violet;
+				transform: matrix(1, -0.2, -0.2, 1, 0, 0);
+			}
+			
+			
+			#example6:hover {
+				background-color: green;
+				transform: translateX(25px);
+			}
+			
+			
+			#example7:hover {
+				background-color: yellow;
+				transform: rotateX(185deg);
+			}
+			
+			
+			#example8:hover {
+				background-color: orange;
+				transform: scaleY(.75);
+			}
+		</style>
+	</head>
+	<body>
+		<h2>CSS3 Transforms</h2>
+		<h3>Hover over the rectangles and watch them change!</h3>
+		<h4>2D Transforms:</h4>
+		<div id="example1">Example1 (translate 2D)</div>
+		</br>
+		<div id='example2'>Example2 (rotate 2D)</div>
+		</br>
+		<div id="example3">Example3 (scale 2D)</div>
+		</br>
+		<div id="example4">Example4 (skews)</div>
+		</br>
+		<div id="example5">Example5 (matrix)</div>
+		</br>
+		</br>
+		<h4>3D Transforms:</h4>
+		<div id="example6">Example6 (translate 3D)</div>
+		</br>
+		<div id="example7">Example7 (rotate 3D)</div>
+		</br>
+		<div id="example8">Example8 (scale 3D)</div>
+		</br>
+	</body>
+</html>
