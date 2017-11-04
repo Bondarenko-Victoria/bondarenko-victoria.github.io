@@ -4,40 +4,33 @@
 		<meta charset="UTF-8"/>
 		<title>JSON Parse, Stringify</title>
 		<script type="text/javascript">
-			
-			function parseNames(){
-				var myJSON1 = '{ "persons" : [' + '{ "firstName":"Adam" , "lastName":"First" },' +
-								'{ "firstName":"Eve" , "lastName":"Second" },' + 
-								'{ "firstName":"Cain" , "lastName":"Third" } ]}';
-				var myObj1 = JSON.parse(myJSON1);
-				document.getElementById('output1').innerHTML = myObj1.persons[0].firstName + " " + 
-				myObj1.persons[0].lastName + ", " + myObj1.persons[1].firstName + " " + myObj1.persons[1].lastName + 
-				", " + myObj1.persons[2].firstName + " " + myObj1.persons[2].lastName;
+			var adam = {"firstName":"Adam", "lastName":"First", "favoriteColor":"blue"};
+			var eve = {"firstName":"Eve", "lastName":"Second", "favoriteColor":"red"};
+			var cain = {"firstName":"Cain", "lastName":"Third", "favoriteColor":"yellow"};
+			var persons = [JSON.stringify(adam), JSON.stringify(eve), JSON.stringify(cain)];
+			function searchingPersonsColor() {
+				for (var i = 0; i < persons.length; i++){
+					if (JSON.parse(persons[i]).favoriteColor == document.getElementById("color").value){
+						var myObj = JSON.parse(persons[i]);
+						document.getElementById("result").innerHTML = myObj.favoriteColor + " is favorite color of " 
+						+ myObj.firstName + " " + myObj.lastName + ".";
+						break;
+					} else
+						document.getElementById("result").innerHTML = "Maybe, this is your favorite color?!";
+				} 
+					
 			}
-			
-			function stringifyNames(){
-				var myObj2 = [
-					{"firstName": "Adam", "lastName": "First"},
-					{"firstName": "Eve", "lastName": "Second"},
-					{"firstName": "Cain", "lastName": "Third"}
-					];
-				var myJSON = JSON.stringify(myObj2);
-				document.getElementById('output2').innerHTML = myJSON;
-			}
-			
 		</script>
 	</head>
 	<body>
-		<b>1. Here is simple demonstration of <font color="red">JSON.parse()</font></b>
-		<div>
-			<button type="button" onclick="parseNames()">See All Parse Names</button>
-		</div>
-		<div id="output1"></div><br><br>
-		<b>2. Here is simple demonstration of <font color="green">JSON.stringify()</font></b>
-		<div>
-			<button type="button" onclick="stringifyNames()">See All Stringify Names</button>
-			
-		</div>
-		<div id="output2"></div>
+		<form>
+			Guess Favorite Color: 
+			</br></br>
+			<input type="text" id="color" value="red">
+			</br></br>
+			<input type="button" value="Press" onclick="searchingPersonsColor()">
+			</br></br>
+		</form>
+		<div id="result"></div><br>
 	</body>
 </html>
