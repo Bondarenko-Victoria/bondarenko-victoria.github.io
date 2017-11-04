@@ -7,114 +7,76 @@
 	<body>
 		<!-- 1. Object Creation Functions -->
 		<h2>1. Object Creation Functions</h2>
-		
-		<p><i><strong>Do it with the new keyword:</strong></i></p>
-		
-		<p>var objectCreation = <strong>new</strong> Object();</p>
-		<p>objectCreation.number1 = 11;</p>
-		<p>objectCreation.number2 = 22;</p></br>
-		
 		<script>
 			var objectCreation = new Object();
 			objectCreation.number1 = 11;
 			objectCreation.number2 = 22;
+			document.write("Result:<br \/>objectCreation.number1 = " + objectCreation.number1);
+			document.write("<br \/>objectCreation.number2 = " + objectCreation.number2);
 		</script>
-
-		<p><i><strong>Or do it with the object literal:</strong></i></p>
-		
-		<p>var objectCreation = {number1:11, number2:22};</p></br>
-		
+		</br>
 		
 		<!-- 2. Properties -->
 		<h2>2. Properties</h2>
-		
-		<p><strong>Property is the value that an object holds.</strong></p>
-		
-		<p>To see it more clear, my example of the <u>code</u> in <strong>bold</strong>.</p></br>
-		
-		<p><i><strong>Do it with the new keyword:</strong></i></p>
-		
-		<p>var propertiesExample = new Object();</p>
-		<p><strong>propertiesExample.property1 = "property";</p>
-		<p>propertiesExample.property2 = 20;</strong></p>
+		<script>
+			var propertiesExample = new Object();
+			propertiesExample.property1 = "property";
+			propertiesExample.property2 = 20;
+			document.write("Result:<br \/>propertiesExample.property1 = " + propertiesExample.property1);
+			document.write("<br \/>propertiesExample.property2 = " + propertiesExample.property2);
+		</script>
 		</br>
-		<p><i><strong>Or do it with the object literal:</strong></i></p>
-		
-		<p>var propertiesExample = {<strong>property1:"property", property2:20</strong>};</p></br>
-		
 		
 		<!-- 3. Methods -->
 		<h2>3. Methods</h2>
-		
-		<p><strong>A method is an object's behavior.</strong></p></br>
-		
-		<p>var methodExample = new Object();</p>
-		<p>// Here is a method for the methodExample object:</p>
-		<p><strong>methodExample.example = function(){</strong></p>
-		<p><strong>console.log("hereIsOurMethod");</strong></p>
-		<p><strong>}</strong></p>
+		<div id="method"></div>
+		<!-- console.log(""); -->
+		<script>
+			var methodExample = new Object();
+			methodExample.example = function(){
+				console.log("Here is our method");
+			}
+			document.getElementById("method").innerHTML = methodExample.example;
+		</script>
 		</br>
-		
 		
 		<!-- 4. Instantiation -->
 		<h2>4. Instantiation</h2>
-		
-		<p><strong>Instantiation is an object's initialization.</strong></p>
-		
-		<p>For example, if we have some class, we can instantiate it later and use its properties or methods.</p></br>
-		
-		<p>function instantiationExample(){</p>
-			<p>name = "Vicky";</p>
-			<p>country = "Ukraine";</p>
-		<p>}</p>
-
-		<p>//It is instantiating an instantiationExample object:</p>
-		<p>var example = new instantiationExample(){</p>
-			<p>console.log("Ukraine");</p>
-		<p>}</p>
+		<p>To see an answer go to console!</p>
+		<script>
+			function instantiationExample(){
+				name = "Vicky";
+				country = "Ukraine";
+			}
+			
+			var example = new instantiationExample();
+			console.log("Ukraine");
+		</script>
 		</br>
-		
 		
 		<!-- 5. Inheritance -->
 		<h2>5. Inheritance</h2>
-		
-		<p><strong>Inheritance is when an object shares its properties with another object.</strong></p>
-		
-		<p>Here, we see that the base class gives its properties to the sub class.</p></br>
-		
-		<p>function baseClass() {};</p>
-		<p>// It gives its prototype object parent the function:</p>
-		<p>baseClass.prototype.base = function(){</p>
-			<p>console.log("I am base class type");</p>
-		<p>}</p>				
-		<p>function subClass () {};</p>
-		<p>// It inherits properties of the baseClass  to the subClass:</p>
-		<p>subClass.prototype = new baseClass();</p>
-		<p>subClass.prototype.sub = function(){</p>
-			<p>return "SUBCLASS";</p>
-		<p>}</p>
-		<p>var test = new subClass();</p>
-		<p>document.getElementById("subId").innerHTML = test.sub();</p>
-		</br>
-		
-		<p>For example, if we will create the instance and call the methods, we see that subClass inherits the properties of baseClass.</p>
-		<div id="subId">
-		</div>
+		<p>When we create the instance and call the methods, we see that subClass inherits the properties of 
+		baseClass:</p>
+		<div id="subId"></div>
 		
 		<script>
 			function baseClass() {};
 			baseClass.prototype.base = function(){
-				console.log("I am base class type");
+				console.log("*** I am BASE class type ***");
 			}
+			
+			document.write("<br \/><br \/>Result of baseClass():<br \/><br \/>" + baseClass.prototype.base);
 						
 			function subClass () {};
 			subClass.prototype = new baseClass();
 			subClass.prototype.sub = function(){
-				return "SUBCLASS";
+				return "!!! I am SUB class class type !!!";
 			}
 
 			var test = new subClass();
 			document.getElementById("subId").innerHTML = test.sub();
 		</script>
+		</br>
 	</body>
 </html>
