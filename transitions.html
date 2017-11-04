@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<meta charset="UTF-8">
+        <title>Designing, Defining, and Triggering CSS3 Transitions without Custom Libraries</title>
+		
+        <style type="text/css">
+			div {
+				margin: 10px;
+				height: 120px;
+			}
+			
+			.example1 {
+                background: blue;
+				width: 130px;
+                transition-duration: 2s;
+                transition-timing-function: linear;
+				transition-delay: 1s;
+            }
+			
+			.example1:hover {
+                width: 250px;
+            }
+			
+			
+            .example2 {
+                background: aquamarine;
+                border-radius: 10% 25% 35% 50%;
+				width: 130px;
+				transition: all 2s ease-in-out 2s, transform 2s;
+            }
+			
+            .example2:hover {
+                transform: rotate(360deg);
+            } 
+
+			
+            .example31,
+			.example32,
+			.example33 {
+				position: absolute;
+                border-radius: 1px;
+				width: 120px;
+				transition: all 1s ease-in-out 1s, transform 1s;
+            }
+			
+			.example31 {
+                background: purple;
+            }
+			
+            .example32 {
+                background: violet;
+            }
+			
+			.example33 {
+                background: pink;
+            }
+			
+            .example32:hover {
+                transform: translate(50px, -20px);
+            }
+			
+			.example33:hover {
+                transform: translate(50px, 20px);
+            }
+        </style>
+    </head>
+    <body>        
+        <h2>CSS3 Transitions</h2>
+		<h3>Simple Transition</h3>
+        <div class="example1">Example1</div>
+		</br>
+		</br>
+        <h3>Adding Transformation to Transition</h3>
+		<h4>Rotate Transition</h4>
+        <div class="example2">Example2</div>
+		</br>
+        <h4>Translate Transition</h4>
+        <div class="example31"></div>
+        <div class="example32"></div>
+		<div class="example33"></div>
+		</br>
+		</br>
+    </body>
+</html>
