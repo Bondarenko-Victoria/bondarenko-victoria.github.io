@@ -20,14 +20,29 @@
 		<script>			
 			// Store
 			var person = [];
+			var personConsole = new Object();
 			function storeData(){
-			localStorage.firstCode = document.getElementById("firstName").value;
-			localStorage.lastCode = document.getElementById("lastName").value;
-			localStorage.ageCode = document.getElementById("age").value;
-			person.push(localStorage.ageCode);
-			document.getElementById("store").innerHTML = "Your name is " + localStorage.firstCode + 
-			", your last name is  " + localStorage.lastCode + ", your age is " + localStorage.ageCode + 
-			". Your request has been stored!";
+				localStorage.firstCode = document.getElementById("firstName").value;
+				localStorage.lastCode = document.getElementById("lastName").value;
+				localStorage.ageCode = document.getElementById("age").value;
+				
+				person.push(localStorage.ageCode);
+				
+				document.getElementById("store").innerHTML = "Your name is " + localStorage.firstCode + 
+				", your last name is  " + localStorage.lastCode + ", your age is " + localStorage.ageCode + 
+				". Your request has been stored!";
+				
+				var firstCode2 = document.getElementById("firstName").value;
+				var lastCode2 = document.getElementById("lastName").value;
+				var ageCode2 = document.getElementById("age").value;
+				
+				personConsole.firstCode2 = firstCode2;
+				personConsole.lastCode2 = lastCode2;
+				personConsole.ageCode2 = ageCode2;
+				
+				var jsonPreparation = JSON.stringify(personConsole);
+				localStorage.setItem('personConsole', jsonPreparation);
+				console.log(JSON.parse(localStorage['personConsole']));
 			}
 		</script>
 
@@ -41,13 +56,19 @@
 		
 		<script>			
 			// Retrieve
-			function retrieveData() {
-			var personCode = {last:localStorage.lastCode, first:localStorage.firstCode};
-			localStorage.personInfo = JSON.stringify(personCode);
-			localStorage.info = JSON.stringify(person);
-			document.getElementById("retrieve").innerHTML =  JSON.parse(localStorage.personInfo).first + " "  
-			+ JSON.parse(localStorage.personInfo).last + " with age of " + JSON.parse(localStorage.info) + 
-			", your information successfully retrieved!";
+			function retrieveData() {				
+				var personCode = {last:localStorage.lastCode, first:localStorage.firstCode};
+				
+				localStorage.personInfo = JSON.stringify(personCode);
+				localStorage.info = JSON.stringify(person);
+				
+				document.getElementById("retrieve").innerHTML =  JSON.parse(localStorage.personInfo).first + " "  
+				+ JSON.parse(localStorage.personInfo).last + " with age of " + JSON.parse(localStorage.info) + 
+				", your information successfully retrieved!";
+				
+				var jsonGet = JSON.parse(localStorage['personConsole']);
+				localStorage.getItem('personConsole', jsonGet);
+				console.log(JSON.stringify(personConsole));
 			}
 		</script>
 	</body>
