@@ -78,5 +78,42 @@
 			document.getElementById("subId").innerHTML = test.sub();
 		</script>
 		</br>
+		</br>
+		
+		<!-- Creating and deleting Object -->
+		<h2>6. Creating and deleting Object</h2>
+		<p>First Name: <input type="text" size="12" id="firstName" value="Joseph"></p>
+		<p>Last Name: <input type="text" size="12" id="lastName" value="Smith"></p> 
+		<button type="button" onclick="combineNames()">Press</button>
+		</br>
+		</br>
+		<div id="result"></div>		
+		<p>Delete your first and last name from the Object</p>
+		<button type="button" onclick="deleteNames()">Delete</button>
+		</br>
+		</br>
+		<div id="deleting"></div>
+		</br>
+		</br>
+		</br>
+        <script>
+			function combineNames() {
+				var person = new Object();
+				person.first = document.getElementById("firstName").value;
+				person.last = document.getElementById("lastName").value;
+				
+				document.getElementById("result").innerHTML = "Your name is " + person.first + " " 
+				+ person.last + ".";
+				return person;
+			}
+		 
+			function deleteNames(person) {
+				var deleting = combineNames();
+				delete deleting.first;
+				delete deleting.last;
+				document.getElementById("deleting").innerHTML = "You have deleted your first and last name!";
+				return deleting;
+			}
+      </script>
 	</body>
 </html>
