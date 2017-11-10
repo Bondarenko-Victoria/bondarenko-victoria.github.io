@@ -85,6 +85,50 @@
 			var childElement = document.getElementById("line31");
 			parentElement.removeChild(childElement);
 		</script >
-
+		</br>
+		</br>
+		<h2>4. Combination</h2>
+		<h3>Adding and removing from cart</h3>
+		<ul id="book">
+			<li>Book 1</li>
+			<li>Book 2</li>
+		</ul>
+		<div id="result"></div>
+		<p>Add new book:</p>
+		<input type="text" id="adding">
+		</br>
+		</br>
+		<input type="button" value="Add" onclick="addBook()">	
+		</br>
+		</br>
+		</br>
+		<p>Remove book:</p>
+		<input type="text" id="removing">
+		</br>
+		</br>
+		<input type="button" value="Remove" onclick="removeBook()">
+		</br>
+		</br>
+		<script>
+			function addBook() {
+				var ulli = document.createElement("LI");
+				var id = document.createTextNode(document.getElementById("adding").value);
+				ulli.appendChild(id);
+				
+				document.getElementById("book").appendChild(ulli);
+				document.getElementById("result").innerHTML = "You have added your book successfully!";
+			}
+			
+			function removeBook() {
+				var bookRem = document.getElementById("book");
+				var i;
+				for (i = 0; i <= document.getElementsByTagName("LI").length+2; i++){
+					if (document.getElementById("removing").value == document.getElementById("book").childNodes[i].innerHTML){
+						bookRem.removeChild(bookRem.childNodes[i]);
+						document.getElementById("result").innerHTML = "You have removed your book successfully!";
+					}
+				}
+			}
+		</script>
 	</body>
 </html>
