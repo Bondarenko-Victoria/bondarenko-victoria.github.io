@@ -108,12 +108,13 @@
 		<h2>6. Creating and deleting Object</h2>
 		<p>First Name: <input type="text" size="12" id="firstName" value="Joseph"></p>
 		<p>Last Name: <input type="text" size="12" id="lastName" value="Smith"></p> 
+		<p>Age: <input type="text" size="19" id="yourAge" value="33"></p> 
 		<button type="button" onclick="combineNames()">Press</button>
 		</br>
 		</br>
 		<div id="result"></div>		
-		<p>Delete your first and last name from the Object</p>
-		<button type="button" onclick="deleteNames()">Delete</button>
+		<p>Delete your age from the Object.</p>
+		<button type="button" onclick="deleteAge()">Delete</button>
 		</br>
 		</br>
 		<div id="deleting"></div>
@@ -125,17 +126,18 @@
 				var person = new Object();
 				person.first = document.getElementById("firstName").value;
 				person.last = document.getElementById("lastName").value;
+				person.age = document.getElementById("yourAge").value;
 				
 				document.getElementById("result").innerHTML = "Your name is " + person.first + " " 
-				+ person.last + ".";
+				+ person.last + " with age of " + person.age + ".";
 				return person;
 			}
 		 
-			function deleteNames(person) {
+			function deleteAge(person) {
 				var deleting = combineNames();
-				delete deleting.first;
-				delete deleting.last;
-				document.getElementById("deleting").innerHTML = "You have deleted your first and last name!";
+				delete deleting.age;
+				document.getElementById("deleting").innerHTML = "You have deleted your age! But your first and " + 
+				"last name is " + deleting.first + " " + deleting.last + ".";
 				return deleting;
 			}
       </script>
