@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Schedule</title>
+		<style>
+			body {
+				background-color: Bisque;
+				font-family: sans-serif;
+				margin: auto;
+				padding:5px;
+			}	
+			
+			.logForm {
+				-webkit-perspective: 500;
+				-moz-perspective: 500;
+				-o-perspective:500;
+				-ms-perspective: 500;
+			   perspective: 500;
+				-webkit-transform: perspective(500px);
+				-moz-transform: perspective(500px);
+				-o-transform: perspective(500px);
+				-ms-transform: perspective(500px);
+			   transform: perspective(500px);
+				
+				-webkit-transition: 0.7s;
+				-moz-transition: 0.7s;
+				-o-transition: 0.7s;
+				-ms-transition: 0.7s;
+			   transition: 0.7s;
+				-webkit-transform-style: preserve-3d;
+				-moz-transform-style: preserve-3d;
+				-o-transform-style: preserve-3d;
+				-ms-transform-style: preserve-3d;
+			   transform-style: preserve-3d;
+				position: relative;
+				left: 0;
+				top: 0;
+				width: 100%;
+				-webkit-transition: all 0.5s ease-in-out;
+				-moz-transition: all 0.5s ease-in-out;
+				-o-transition: all 0.5s ease-in-out;
+				-ms-transition: all 0.5s ease-in-out;
+			   transition: all 0.5s ease-in-out;
+			}
+			
+			.logForm.flipped {
+				-webkit-transform: rotateY(180deg);
+				-moz-transform: rotateY(180deg);
+				-o-transform: rotateY(180deg);
+				-ms-transform: rotateY(180deg);
+			   transform: rotateY(180deg);
+			}
+			
+			.front, 
+			.back {
+				-webkit-backface-visibility: hidden;
+				-moz-backface-visibility: hidden;
+				-o-backface-visibility: hidden;
+				-ms-backface-visibility: hidden;
+			   backface-visibility: hidden;
+				-webkit-transition: 0.7s;
+				-moz-transition: 0.7s;
+				-o-transition: 0.7s;
+				-ms-transition: 0.7s;
+			   transition: 0.7s;
+				-webkit-transform-style: preserve-3d;
+				-moz-transform-style: preserve-3d;
+				-o-transform-style: preserve-3d;
+				-ms-transform-style: preserve-3d;
+			   transform-style: preserve-3d;
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+			}
+			
+			/* it is front panel that placed above back */
+			.front {
+				z-index: 2;
+			}
+			
+			@keyframes headerForm{
+				from {
+					background-color: DarkCyan;
+				}
+				to {
+					background-color: DarkSlateGray;
+				}
+			}
+			
+			.headerForm {
+				color: White;
+				padding: 10px;
+				margin: -5px;
+				border-radius: 0px 0px 50px 50px;
+				animation: headerForm 5s ease-in-out 0s infinite alternate;
+			}
+			
+			#registrationForm { 
+				width:100%; 
+				margin-top: -55px;
+				margin-left: 10px;
+			}
+			
+			#loginForm { 
+				width:100%; 
+				margin-top: -130px;
+			}
+			
+			table {
+				padding-top: 15px;
+			}
+			
+			.registrationHeader,
+			.loginHeader {
+				color: DarkCyan; 
+				font-size:2em;
+			}
+			
+			td {
+				font-size: 1.3em; 
+			}
+			
+			#user,
+			#password {
+				color: DarkCyan;
+			}
+			
+			input {
+				height: 25px;
+				color: DarkCyan;
+			}
+			
+			button {
+				font-size:1.1em;  
+				width: 180px; 
+				height: 50px;
+			}
+			
+			.buttonForm {
+				-webkit-box-shadow:inset 0px 0px 16px 2px DarkCyan;
+				-moz-box-shadow:inset 0px 0px 16px 2px DarkCyan;
+				-o-box-shadow:inset 0px 0px 16px 2px DarkCyan;
+				-ms-box-shadow:inset 0px 0px 16px 2px DarkCyan;
+				box-shadow:inset 0px 0px 16px 2px DarkCyan;
+				background:-webkit-gradient(linear, left top, left bottom, color-stop(0.03, DarkCyan), color-stop(1, DarkSlateGray ));
+				background:-webkit-linear-gradient(top, DarkCyan 3%, DarkSlateGray  100%);
+				background:-moz-linear-gradient(top, DarkCyan 3%, DarkSlateGray  100%);
+				background:-o-linear-gradient(top, DarkCyan 3%, DarkSlateGray  100%);
+				background:-ms-linear-gradient(top, DarkCyan 3%, DarkSlateGray  100%);
+				background:linear-gradient(to bottom, DarkCyan 3%, DarkSlateGray  100%);
+				filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='DarkCyan', endColorstr='DarkSlateGray ',GradientType=0);
+				background-color:DarkCyan;
+				-webkit-border-radius:16px;
+				-moz-border-radius:16px;
+				-o-border-radius:16px;
+				-ms-border-radius:16px;
+				border-radius:16px;
+				border:1px solid Teal;
+				display:inline-block;
+				cursor:pointer;
+				color:white;
+				font-family:arial;
+				font-size:16px;
+				padding:7px 14px;
+				text-decoration:none;
+				text-shadow:0px 1px 0px LightCyan;
+			}
+			
+			.buttonForm:hover {
+				background:-webkit-gradient(linear, left top, left bottom, color-stop(0.03, DarkSlateGray ), color-stop(1, DarkCyan));
+				background:-webkit-linear-gradient(top, DarkSlateGray  3%, DarkCyan 100%);
+				background:-moz-linear-gradient(top, DarkSlateGray  3, DarkCyan 100%);
+				background:-o-linear-gradient(top, DarkSlateGray  3%, DarkCyan 100%);
+				background:-ms-linear-gradient(top, DarkSlateGray  3%, DarkCyan 100%);
+				background:linear-gradient(to bottom, DarkSlateGray  3%, DarkCyan 100%);
+				filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='DarkSlateGray ', endColorstr='DarkCyan',GradientType=0);
+				background-color:DarkSlateGray ;
+			}
+			
+			.buttonForm:active {
+				position:relative;
+				top:1px;
+			}
+			
+			#loginMessage {
+				margin-top: 15px; 
+				color:DarkCyan; 
+				size: 1.3em;
+			}
+		</style>
+		<script>			
+			function registration() {	
+				// Get elements by id
+				var userNam = document.getElementById("username").value;
+				var passWordy = document.getElementById("password").value;
+				// Checking
+				if (typeof(Storage) !== "undefined") {
+					// store user information
+					localStorage.setItem("user", JSON.stringify( {
+						username: userNam,
+						password: passWordy
+					}));
+					document.getElementById("loginMessage").innerHTML = "Your new account is activated!";
+				} 
+				else {
+					document.getElementById("loginMessage").innerHTML = "Your new account has not created.";
+				}
+			}
+			
+			function loginFunc() {
+				// Get elements by id
+				var userNam = document.getElementById("username").value;
+				var passWordy = document.getElementById("password").value;
+				// Checking 
+				if (typeof(Storage) != "undefined") {
+					// retrieve user information
+					var user = JSON.parse(localStorage.getItem("user"));
+					if (user.username === userNam && user.password === passWordy){
+						document.querySelector('#logForm').classList.toggle('flipped');
+						return;
+					}
+					else {
+						document.getElementById("loginMessage").innerHTML = "Your username or password are not correct. Try again!";
+						return;
+					}
+				}
+				else {
+					document.getElementById("loginMessage").innerHTML = "There is a problem. Try again!";
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<div class="logForm" id="logForm">
+			<div class="front" id="front">
+				<center><h1 class="headerForm">Your Schedule</h1></center> 
+				<div id="registrationForm">
+					</br></br>
+					<table>
+						<tr><th><h2 class="registrationHeader">REGISTRATION:</h2></th></tr>
+						<tr>
+							<td id="user">User Name:</td> 
+							<td><input type="text" name="username" id="username" size="16"></td>
+						</tr>
+						<tr>
+							<td id="password">Password:</td> 
+							<td><input type="password" name="password" id="password" size="16"></td>
+						</tr>
+					</table>
+					</br>
+					<button type="button" onclick="registration()" class="buttonForm">SIGN IN</button>
+					</br></br>
+					<div id="loginMessage"></div>
+					</br>
+				</div>
+				<center>
+					<div id="loginForm">
+						</br></br>
+						<table>
+							<tr><th><h2 class="loginHeader">Please LOGIN:</h2></th></tr>
+							<tr>
+								<td id="user">User Name:</td> 
+								<td><input type="text" name="username" id="username" size="16"></td>
+							</tr>
+							<tr>
+								<td id="password">Password:</td> 
+								<td><input type="password" name="password" id="password" size="16"></td>
+							</tr>
+						</table>
+						</br>
+						<button type="button" onclick="loginFunc()" class="buttonForm">LOG IN</button>
+						</br>
+					</div>	
+				</center>  
+			</div>
+			<div class="back" id="back">
+			</div>
+		</div>
+	</body>
+</html>
