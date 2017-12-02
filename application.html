@@ -80,6 +80,15 @@
 				z-index: 2;
 			}
 			
+			/* it is back that initially was hidden panel */
+			.back {
+				-webkit-transform: rotateY(180deg);
+				-moz-transform: rotateY(180deg);
+				-o-transform: rotateY(180deg);
+				-ms-transform: rotateY(180deg);
+			   transform: rotateY(180deg);
+			}
+			
 			@keyframes headerForm{
 				from {
 					background-color: DarkCyan;
@@ -168,7 +177,8 @@
 				text-shadow:0px 1px 0px LightCyan;
 			}
 			
-			.buttonForm:hover {
+			.buttonForm:hover,
+			.buttonForm1:hover{
 				background:-webkit-gradient(linear, left top, left bottom, color-stop(0.03, DarkSlateGray ), color-stop(1, DarkCyan));
 				background:-webkit-linear-gradient(top, DarkSlateGray  3%, DarkCyan 100%);
 				background:-moz-linear-gradient(top, DarkSlateGray  3, DarkCyan 100%);
@@ -176,12 +186,46 @@
 				background:-ms-linear-gradient(top, DarkSlateGray  3%, DarkCyan 100%);
 				background:linear-gradient(to bottom, DarkSlateGray  3%, DarkCyan 100%);
 				filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='DarkSlateGray ', endColorstr='DarkCyan',GradientType=0);
-				background-color:DarkSlateGray ;
+				background-color:DarkSlateGray;
 			}
 			
-			.buttonForm:active {
+			.buttonForm:active,
+			.buttonForm1:active{
 				position:relative;
 				top:1px;
+			}
+			
+			.buttonForm1 {
+				font-size:0.8em;  
+				width: 90px; 
+				height: 36px;
+				-webkit-box-shadow:inset 0px 0px 16px 2px DarkCyan;
+				-moz-box-shadow:inset 0px 0px 16px 2px DarkCyan;
+				-o-box-shadow:inset 0px 0px 16px 2px DarkCyan;
+				-ms-box-shadow:inset 0px 0px 16px 2px DarkCyan;
+				box-shadow:inset 0px 0px 16px 2px DarkCyan;
+				background:-webkit-gradient(linear, left top, left bottom, color-stop(0.03, DarkCyan), color-stop(1, DarkSlateGray ));
+				background:-webkit-linear-gradient(top, DarkCyan 3%, DarkSlateGray  100%);
+				background:-moz-linear-gradient(top, DarkCyan 3%, DarkSlateGray  100%);
+				background:-o-linear-gradient(top, DarkCyan 3%, DarkSlateGray  100%);
+				background:-ms-linear-gradient(top, DarkCyan 3%, DarkSlateGray  100%);
+				background:linear-gradient(to bottom, DarkCyan 3%, DarkSlateGray  100%);
+				filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='DarkCyan', endColorstr='DarkSlateGray ',GradientType=0);
+				background-color:DarkCyan;
+				-webkit-border-radius:10px;
+				-moz-border-radius:10px;
+				-o-border-radius:10px;
+				-ms-border-radius:10px;
+				border-radius:10px;
+				border:1px solid Teal;
+				display:inline-block;
+				cursor:pointer;
+				color:white;
+				font-family:arial;
+				font-size:16px;
+				padding:7px 14px;
+				text-decoration:none;
+				text-shadow:0px 1px 0px LightCyan;
 			}
 			
 			#loginMessage {
@@ -189,8 +233,73 @@
 				color:DarkCyan; 
 				size: 1.3em;
 			}
+			
+			@keyframes headerBack{
+				from {
+					background-color: lightyellow;
+					color: DarkSlateGray;
+				}
+				to {
+					background-color: DarkCyan;
+					color: lightyellow;
+				}
+			}
+			
+			.headerBack {
+				color: DarkCyan;
+				padding: 10px;
+				margin: -5px;
+				border-radius: 0px 0px 50px 50px;
+				border:2px solid DarkCyan;
+				animation: headerBack 15s ease-in-out 0s infinite alternate;
+			}
+			
+			.dayStyle a{
+				font-size:2em;
+				text-decoration:none; 
+				padding-left: 12px;
+			}
+			
+			.dayStyle a,
+			a:visited,
+			a:hover,
+			a:active{
+				position:relative;
+				transition:0.2s color ease;
+				text-decoration:none;
+				color:DarkCyan;
+			}
+			
+			.dayStyle a:hover{
+				color:darkred;
+			}
+			
+			.weekStyle {
+				margin: 4px 0; 
+				padding: 4px 6px; 
+				list-style-type:none; 
+				border: 2px solid;
+				border-radius: 5px;
+				border-color:DarkCyan; 
+				background-color:lightyellow; 
+			}
+			
+			.hiddenPanel {
+				display:none;
+			}
+			
+			.displayReading {
+				border-bottom: 1px solid DarkCyan;
+			}
+			
+			li {
+				margin: 4px 0; 
+				padding: 4px 6px;
+				list-style-type:none;
+				font-size: 1.3em; 
+			}
 		</style>
-		<script>			
+		<script>					
 			function registration() {	
 				// Get elements by id
 				var userNam = document.getElementById("username").value;
@@ -219,6 +328,7 @@
 					var user = JSON.parse(localStorage.getItem("user"));
 					if (user.username === userNam && user.password === passWordy){
 						document.querySelector('#logForm').classList.toggle('flipped');
+						check();
 						return;
 					}
 					else {
@@ -228,6 +338,238 @@
 				}
 				else {
 					document.getElementById("loginMessage").innerHTML = "There is a problem. Try again!";
+				}
+			}
+			
+			function saveEdits1() {
+				//get the (edit) element
+				var editElem11 = document.getElementById("edit11");
+				var editElem12 = document.getElementById("edit12");
+				//get the (edit) element content
+				var userVersion11 = editElem11.innerHTML;
+				var userVersion12 = editElem12.innerHTML;
+				//save the element content to a local storage
+				localStorage.userEdits11 = userVersion11;
+				localStorage.userEdits12 = userVersion12;
+				//write a confirmation message
+				document.getElementById("update1").innerHTML = "Your edits are saved!";
+			}
+			
+			function saveEdits2() {
+				//get the (edit) element
+				var editElem21 = document.getElementById("edit21");
+				var editElem22 = document.getElementById("edit22");
+				//get the (edit) element content
+				var userVersion21 = editElem21.innerHTML;
+				var userVersion22 = editElem22.innerHTML;
+				//save the element content to a local storage
+				localStorage.userEdits21 = userVersion21;
+				localStorage.userEdits22 = userVersion22;
+				//write a confirmation message
+				document.getElementById("update2").innerHTML = "Your edits are saved!";
+			}
+			
+			function saveEdits3() {
+				//get the (edit) element
+				var editElem31 = document.getElementById("edit31");
+				var editElem32 = document.getElementById("edit32");
+				//get the (edit) element content
+				var userVersion31 = editElem31.innerHTML;
+				var userVersion32 = editElem32.innerHTML;
+				//save the element content to a local storage
+				localStorage.userEdits31 = userVersion31;
+				localStorage.userEdits32 = userVersion32;
+				//write a confirmation message
+				document.getElementById("update3").innerHTML = "Your edits are saved!";
+			}
+			
+			function saveEdits4() {
+				//get the (edit) element
+				var editElem41 = document.getElementById("edit41");
+				var editElem42 = document.getElementById("edit42");
+				//get the (edit) element content
+				var userVersion41 = editElem41.innerHTML;
+				var userVersion42 = editElem42.innerHTML;
+				//save the element content to a local storage
+				localStorage.userEdits41 = userVersion41;
+				localStorage.userEdits42 = userVersion42;
+				//write a confirmation message
+				document.getElementById("update4").innerHTML = "Your edits are saved!";
+			}
+			
+			function saveEdits5() {
+				//get the (edit) element
+				var editElem51 = document.getElementById("edit51");
+				var editElem52 = document.getElementById("edit52");
+				//get the (edit) element content
+				var userVersion51 = editElem51.innerHTML;
+				var userVersion52 = editElem52.innerHTML;
+				//save the element content to a local storage
+				localStorage.userEdits51 = userVersion51;
+				localStorage.userEdits52 = userVersion52;
+				//write a confirmation message
+				document.getElementById("update5").innerHTML = "Your edits are saved!";
+			}
+			
+			function saveEdits6() {
+				//get the (edit) element
+				var editElem61 = document.getElementById("edit61");
+				var editElem62 = document.getElementById("edit62");
+				//get the (edit) element content
+				var userVersion61 = editElem61.innerHTML;
+				var userVersion62 = editElem62.innerHTML;
+				//save the element content to a local storage
+				localStorage.userEdits61 = userVersion61;
+				localStorage.userEdits62 = userVersion62;
+				//write a confirmation message
+				document.getElementById("update6").innerHTML = "Your edits are saved!";
+			}
+			
+			function saveEdits7() {
+				//get the (edit) element
+				var editElem71 = document.getElementById("edit71");
+				var editElem72 = document.getElementById("edit72");
+				//get the (edit) element content
+				var userVersion71 = editElem71.innerHTML;
+				var userVersion72 = editElem72.innerHTML;
+				//save the element content to a local storage
+				localStorage.userEdits71 = userVersion71;
+				localStorage.userEdits72 = userVersion72;
+				//write a confirmation message
+				document.getElementById("update7").innerHTML = "Your edits are saved!";
+			}
+			
+			function check() {
+				//make sure that the user has previously saved edits
+				if(localStorage.userEdits11 != null)
+				document.getElementById("edit11").innerHTML = localStorage.userEdits11;
+				if(localStorage.userEdits12 != null)
+				document.getElementById("edit12").innerHTML = localStorage.userEdits12;
+				
+				if(localStorage.userEdits21 != null)
+				document.getElementById("edit21").innerHTML = localStorage.userEdits21;
+				if(localStorage.userEdits22 != null)
+				document.getElementById("edit22").innerHTML = localStorage.userEdits22;
+				
+				if(localStorage.userEdits31 != null)
+				document.getElementById("edit31").innerHTML = localStorage.userEdits31;
+				if(localStorage.userEdits32 != null)
+				document.getElementById("edit32").innerHTML = localStorage.userEdits32;
+				
+				if(localStorage.userEdits41 != null)
+				document.getElementById("edit41").innerHTML = localStorage.userEdits41;
+				if(localStorage.userEdits42 != null)
+				document.getElementById("edit42").innerHTML = localStorage.userEdits42;
+				
+				if(localStorage.userEdits51 != null)
+				document.getElementById("edit51").innerHTML = localStorage.userEdits51;
+				if(localStorage.userEdits52 != null)
+				document.getElementById("edit52").innerHTML = localStorage.userEdits52;
+				
+				if(localStorage.userEdits61 != null)
+				document.getElementById("edit61").innerHTML = localStorage.userEdits61;
+				if(localStorage.userEdits62 != null)
+				document.getElementById("edit62").innerHTML = localStorage.userEdits62;
+				
+				if(localStorage.userEdits71 != null)
+				document.getElementById("edit71").innerHTML = localStorage.userEdits71;
+				if(localStorage.userEdits72 != null)
+				document.getElementById("edit72").innerHTML = localStorage.userEdits72;
+			}
+			
+			function clear() {
+				localStorage.userEdits11 = "Name";
+				localStorage.userEdits12 = "Time";
+				
+				localStorage.userEdits21 = "Name";
+				localStorage.userEdits22 = "Time";
+				
+				localStorage.userEdits31 = "Name";
+				localStorage.userEdits32 = "Time";
+				
+				localStorage.userEdits41 = "Name";
+				localStorage.userEdits42 = "Time";
+				
+				localStorage.userEdits51 = "Name";
+				localStorage.userEdits52 = "Time";
+				
+				localStorage.userEdits61 = "Name";
+				localStorage.userEdits62 = "Time";
+				
+				localStorage.userEdits71 = "Name";
+				localStorage.userEdits72 = "Time";
+				
+				check();
+			}
+		</script>
+		<script>
+			function mondayFunc(){
+				var panel = document.getElementById('mondayID');
+				if(panel.style.display == 'block'){
+					panel.style.display = 'none';
+				}
+				else {
+					panel.style.display = 'block';                    
+				}
+			}
+			
+			function tuesdayFunc(){
+				var panel = document.getElementById('tuesdayID');
+				if(panel.style.display == 'block'){
+					panel.style.display = 'none';
+				}
+				else {
+					panel.style.display = 'block';                    
+				}
+			}
+			
+			function wednesdayFunc(){
+				var panel = document.getElementById('wednesdayID');
+				if(panel.style.display == 'block'){
+					panel.style.display = 'none';
+				}
+				else {
+					panel.style.display = 'block';                    
+				}
+			}
+			
+			function thursdayFunc(){
+				var panel = document.getElementById('thursdayID');
+				if(panel.style.display == 'block'){
+					panel.style.display = 'none';
+				}
+				else {
+					panel.style.display = 'block';                    
+				}
+			}
+			
+			function fridayFunc(){
+				var panel = document.getElementById('fridayID');
+				if(panel.style.display == 'block'){
+					panel.style.display = 'none';
+				}
+				else {
+					panel.style.display = 'block';                    
+				}
+			}
+			
+			function saturdayFunc(){
+				var panel = document.getElementById('saturdayID');
+				if(panel.style.display == 'block'){
+					panel.style.display = 'none';
+				}
+				else {
+					panel.style.display = 'block';                    
+				}
+			}
+			
+			function sundayFunc(){
+				var panel = document.getElementById('sundayID');
+				if(panel.style.display == 'block'){
+					panel.style.display = 'none';
+				}
+				else {
+					panel.style.display = 'block';                    
 				}
 			}
 		</script>
@@ -277,6 +619,102 @@
 				</center>  
 			</div>
 			<div class="back" id="back">
+				<center><h1 class="headerBack">My Schedule</h1></center>
+				</br>
+				<button type="button" onclick="clear()"class="buttonForm">Clear All Information</button>
+				</br>
+				</br>
+				<div class="dayStyle">
+					<div class="weekStyle" onClick="mondayFunc()"><a href="#">Monday</a></div>
+					<div id="mondayID" class="hiddenPanel">
+						<ul class="displayReading">
+							<li id="edit11" contenteditable="true">Name</li>
+							<li id="edit12" contenteditable="true">Time</li>
+							<button type="button" onclick="saveEdits1()" class="buttonForm1">Save</button>
+							</br>
+							</br>
+							<div id="update1">* Edit the text above and click save</div>
+						</ul>  
+					</div> 
+				</div>   
+				<div class="dayStyle">     
+					<div class="weekStyle" onClick="tuesdayFunc()"><a href="#">Tuesday</a></div>
+					<div id="tuesdayID" class="hiddenPanel">
+						<ul class="displayReading">
+							<li id="edit21" contenteditable="true">Name</li>
+							<li id="edit22" contenteditable="true">Time</li>
+							<button type="button" onclick="saveEdits2()" class="buttonForm1">Save</button>
+							</br>
+							</br>
+							<div id="update2">* Edit the text above and click save</div>
+						</ul>   
+					</div>
+				</div>
+				<div class="dayStyle">     
+					<div class="weekStyle" onClick="wednesdayFunc()"><a href="#">Wednesday</a></div>
+					<div id="wednesdayID" class="hiddenPanel">
+						<ul class="displayReading">
+							<li id="edit31" contenteditable="true">Name</li>
+							<li id="edit32" contenteditable="true">Time</li>
+							<button type="button" onclick="saveEdits3()" class="buttonForm1">Save</button>
+							</br>
+							</br>
+							<div id="update3">* Edit the text above and click save</div>
+						</ul>           
+					</div>
+				</div>
+				<div class="dayStyle">     
+					<div class="weekStyle" onClick="thursdayFunc()"><a href="#">Thursday</a></div>
+					<div id="thursdayID" class="hiddenPanel">
+						<ul class="displayReading">
+							<li id="edit41" contenteditable="true">Name</li>
+							<li id="edit42" contenteditable="true">Time</li>
+							<button type="button" onclick="saveEdits4()" class="buttonForm1">Save</button>
+							</br>
+							</br>
+							<div id="update4">* Edit the text above and click save</div>
+						</ul class="displayReading">           
+					</div>
+				</div>
+				<div class="dayStyle">     
+					<div class="weekStyle" onClick="fridayFunc()"><a href="#">Friday</a></div>
+					<div id="fridayID" class="hiddenPanel">
+						<ul class="displayReading">
+							<li id="edit51" contenteditable="true">Name</li>
+							<li id="edit52" contenteditable="true">Time</li>
+							<button type="button" onclick="saveEdits5()" class="buttonForm1">Save</button>
+							</br>
+							</br>
+							<div id="update5">* Edit the text above and click save</div>
+						</ul>           
+					</div>
+				</div>
+				<div class="dayStyle">     
+					<div class="weekStyle" onClick="saturdayFunc()"><a href="#">Saturday</a></div>
+					<div id="saturdayID" class="hiddenPanel">
+						<ul class="displayReading">
+							<li id="edit61" contenteditable="true">Name</li>
+							<li id="edit62" contenteditable="true">Time</li>
+							<button type="button" onclick="saveEdits6()" class="buttonForm1">Save</button>
+							</br>
+							</br>
+							<div id="update6">* Edit the text above and click save</div>
+						</ul>           
+					</div>
+				</div>
+				<div class="dayStyle">     
+					<div class="weekStyle" onClick="sundayFunc()"><a href="#">Sunday</a></div>
+					<div id="sundayID" class="hiddenPanel">
+						<ul class="displayReading">
+							<li id="edit71" contenteditable="true">Name</li>
+							<li id="edit72" contenteditable="true">Time</li>
+							<button type="button" onclick="saveEdits7()" class="buttonForm1">Save</button>
+							</br>
+							</br>
+							<div id="update7">* Edit the text above and click save</div>
+						</ul>           
+					</div>
+				</div>
 			</div>
 		</div>
 	</body>
