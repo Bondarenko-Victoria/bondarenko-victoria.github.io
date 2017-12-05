@@ -560,8 +560,8 @@
 						console.log(value)
 						var table = "<table><tr><th>13 Topics</th><th>Weeks</th><th>Done</th></tr>\n";
 						for (var i = 0; i < value.schedule.length; i++) {
-							table += "<tr><td>" + value.schedule[i].topic + "</td><td>" + value.schedule[i].week + 
-							"</td><td>" + value.schedule[i].done + "</td></tr>\n";
+							table += "<tr><td><center>" + value.schedule[i].topic + "</center></td><td><center>" + value.schedule[i].week + 
+							"</center></td><td><center>" + value.schedule[i].done + "</center></td></tr>\n";
 						}
 						document.getElementById("result").innerHTML = table;
 					}
