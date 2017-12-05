@@ -56,14 +56,14 @@ ol li{
     padding: 3px 1em;
     border: 1px solid DarkSlateBlue; 
     border-bottom: none;
-    background: MediumSlateBlue; 
+    background: DarkCyan; 
     color: black;
     text-decoration: none; 
 }
 
 #navlist li a:hover{
     color: white; 
-    background: DarkSlateBlue; 
+    background: DarkSlateGray; 
     border-color: black; 
 }
 
